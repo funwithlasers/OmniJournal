@@ -1,0 +1,6 @@
+@OmniJournal_HostAddress = http://localhost:5264
+
+GET {{OmniJournal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
