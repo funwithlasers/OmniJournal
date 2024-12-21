@@ -1,4 +1,5 @@
-﻿namespace OmniJournal;
+﻿namespace OmniJournal.Core;
+
 public abstract class Tracker<T> : ITracker
 {
     protected string _name;

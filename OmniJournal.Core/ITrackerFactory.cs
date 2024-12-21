@@ -1,4 +1,4 @@
-namespace OmniJournal;
+namespace OmniJournal.Core;
 
 public interface ITrackerFactory
 {

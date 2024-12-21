@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace OmniJournal;
+namespace OmniJournal.Core;
 
 public class TrackerFactory
 {

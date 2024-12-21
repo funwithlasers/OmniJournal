@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace OmniJournal;
+namespace OmniJournal.Core;
 
 public class InputTracker<T> : Tracker<T> where T : INumber<T>
 {
