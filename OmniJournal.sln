@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniJournal.Api", "OmniJour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniJournal.Maui", "OmniJournal.Maui\OmniJournal.Maui.csproj", "{911AF0A0-1D97-4327-A28B-9C37115C3880}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniJournal.Core", "OmniJournal.Core\OmniJournal.Core.csproj", "{430A89F0-A25A-4592-AACB-B0530C25DD1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{911AF0A0-1D97-4327-A28B-9C37115C3880}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{911AF0A0-1D97-4327-A28B-9C37115C3880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{911AF0A0-1D97-4327-A28B-9C37115C3880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{430A89F0-A25A-4592-AACB-B0530C25DD1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{430A89F0-A25A-4592-AACB-B0530C25DD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{430A89F0-A25A-4592-AACB-B0530C25DD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{430A89F0-A25A-4592-AACB-B0530C25DD1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

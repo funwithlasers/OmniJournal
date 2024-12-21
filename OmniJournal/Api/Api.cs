@@ -1,6 +1,4 @@
-﻿using OmniJournal;
-
-namespace OmniJournal.Api;
+﻿namespace OmniJournal.Api;
 public static partial class Api
 {
     public static void SetUpApiSample(this IEndpointRouteBuilder app)
@@ -47,12 +45,5 @@ public static partial class Api
             return forecast;
         })
         .WithName("GetWeatherForecastMinimal");
-
-        app.MapGet("/api/echo/{message}/{count:int}", (string message, int count) =>
-        {
-            var messages = Enumerable.Range(1, count).Select(i => message).ToArray();
-            return new { Messages = messages };
-        })
-        .WithName("TestFactory");
     }
 }
