@@ -1,6 +1,8 @@
+using OmniJournal.Core.Models;
+
 namespace OmniJournal.Core;
 
 public interface ITrackerFactory
 {
-    void AddTracker<T>(IServiceCollection services, string name) where T : Tracker<T>;
+   // void AddTracker<T>(IServiceCollection services, string name) where T : Tracker<T>;
 }

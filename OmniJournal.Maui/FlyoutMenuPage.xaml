@@ -9,15 +9,15 @@
                     SelectionMode="Single">
         <CollectionView.ItemsSource>
             <x:Array Type="{x:Type local:FlyoutPageItem}">
-                <local:FlyoutPageItem Title="Contacts"
+                <local:FlyoutPageItem Title="Journal"
                                       IconSource="contacts.png"
                                       TargetType="{x:Type local:MainPage}" />
-                <local:FlyoutPageItem Title="TodoList"
-                                      IconSource="todo.png"
-                                      TargetType="{x:Type local:MainPage}" />
-                <local:FlyoutPageItem Title="Reminders"
+                <local:FlyoutPageItem Title="Charts"
                                       IconSource="reminders.png"
                                       TargetType="{x:Type local:MainPage}" />
+                <local:FlyoutPageItem Title="Manage Trackers"
+                                      IconSource="todo.png"
+                                      TargetType="{x:Type local:TrackerBuilderPage}" />
             </x:Array>
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>

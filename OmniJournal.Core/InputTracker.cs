@@ -1,26 +1,12 @@
-﻿using System.Numerics;
+﻿using OmniJournal.Core.Models;
+using System.Numerics;
 
 namespace OmniJournal.Core;
 
-public class InputTracker<T> : Tracker<T> where T : INumber<T>
+public class InputTracker : Tracker
 {
-    public InputTracker(string name) : base(name)
+    public InputTracker(string name) : base()
     {
     }
 
-    public override object? Value
-    {
-        get => (T?)_value;
-        set
-        {
-            if (value == null)
-            {
-                _value = value;
-            }
-            else
-            {
-                throw new ArgumentException($"Value must be of type {typeof(T)} or null.");
-            }
-        }
-    }
 }

@@ -1,6 +1,8 @@
-﻿namespace OmniJournal.Core;
+﻿using OmniJournal.Core.Models;
 
-public class RankTracker : Tracker<int>
+namespace OmniJournal.Core;
+
+public class RankTracker : Tracker
 {
     private List<Ranking> _options;
 
@@ -10,24 +12,9 @@ public class RankTracker : Tracker<int>
         set => _options = value;
     }
 
-    public RankTracker(string name, List<Ranking> rankings) : base(name)
+    public RankTracker(string name, List<Ranking> rankings) : base()
     {
         _options = rankings;
     }
 
-    public override object? Value
-    {
-        get => (int?)_value;
-        set
-        {
-            if (value == null || _options.Any(option => option.Rank == (int?)value))
-            {
-                _value = value;
-            }
-            else
-            {
-                throw new ArgumentException("Value must belong to one of the options.");
-            }
-        }
-    }
 }

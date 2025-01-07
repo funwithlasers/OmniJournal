@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:templates="clr-namespace:OmniJournal.Maui.Templates"
+    xmlns:models="clr-namespace:OmniJournal.Core.Models;assembly=OmniJournal.Core"
+    x:Class="OmniJournal.Maui.TrackerBuilderPage">
+    <ContentPage.Resources>
+        <DataTemplate 
+            x:Key="defaultTemplate"
+            x:DataType="models:Tracker">
+            <Label 
+                Text="{Binding Type}"
+                FontSize="{StaticResource smallTextSize}"
+                Margin="0,0,7,0" />
+        </DataTemplate>
+        <DataTemplate 
+            x:Key="rankedTemplate"
+            x:DataType="sys:String">
+            <Label 
+                FontSize="{StaticResource smallTextSize}"
+                Margin="0,0,7,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="{Binding}"
+                            TextColor="DarkRed" />
+                        <Span 
+                            Text="&#xf004;"
+                            TextColor="DarkRed"
+                            FontFamily="fa-solid-900" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </DataTemplate>
+        <templates:TrackerTemplateSelector 
+            x:Key="TrackerTemplateSelector"
+            DefaultTemplate="{StaticResource defaultTemplate}"
+            RankedTemplate="{StaticResource rankedTemplate}" />
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Tracker Builder"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+            <Label 
+                Text="Create a new tracker"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+            <Label 
+                Text="This tracker will be added to your journal"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+            <Button 
+                x:Name="SubmitButton"
+                Text="Create"
+                SemanticProperties.Hint="Create new tracker"
+                Clicked="OnCreateTrackerClicked"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
