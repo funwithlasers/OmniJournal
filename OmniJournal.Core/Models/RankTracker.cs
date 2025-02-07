@@ -1,6 +1,4 @@
-﻿using OmniJournal.Core.Models;
-
-namespace OmniJournal.Core;
+﻿namespace OmniJournal.Core.Models;
 
 public class RankTracker : Tracker
 {
@@ -12,9 +10,8 @@ public class RankTracker : Tracker
         set => _options = value;
     }
 
-    public RankTracker(string name, List<Ranking> rankings) : base()
+    public RankTracker(string name, List<Ranking> rankings) : base(name)
     {
         _options = rankings;
     }
-
 }

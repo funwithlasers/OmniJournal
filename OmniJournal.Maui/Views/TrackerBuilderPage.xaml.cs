@@ -1,18 +1,45 @@
-﻿namespace OmniJournal.Maui;
+﻿using OmniJournal.Core.Models;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-public partial class TrackerBuilderPage : ContentPage
+namespace OmniJournal.Maui.Views;
+
+public partial class TrackerBuilderPage : ContentPage, INotifyPropertyChanged
 {
+    //public ObservableCollection<TrackerBuilder> ActiveTrackerBuilder { get; set; }
+    //private readonly TrackerFactory _trackerFactory = new TrackerFactory();
+    private TrackerType _selectedTrackerType;
 
-	public TrackerBuilderPage()
-	{
-		InitializeComponent();
-	}
+    public TrackerType SelectedTrackerType
+    {
+        get => _selectedTrackerType;
+        set     // Copoliot gave me this nonsense that can be improved with an attribute
+        {
+            if (_selectedTrackerType != value)
+            {
+                _selectedTrackerType = value;
+                OnPropertyChanged(nameof(SelectedTrackerType));
+            }
+        }
+    }
 
-	private void OnCreateTrackerClicked(object sender, EventArgs e)
-	{
+    public List<string> TrackerTypes { get; set; } = [.. Enum.GetNames<TrackerType>()];
 
-		SemanticScreenReader.Announce("SubmitButton.Hint");
-	}
+    public TrackerBuilderPage()
+    {
+        InitializeComponent();
+        SelectedTrackerType = (TrackerType)(-1); // Set a default value that is not a valid TrackerType
+        BindingContext = this;
+    }
+
+    //public event PropertyChangedEventHandler PropertyChanged;
+
+    //protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    //{
+    //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //}
+
 }
 
 //MySolution

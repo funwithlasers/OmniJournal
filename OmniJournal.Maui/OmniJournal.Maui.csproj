@@ -75,6 +75,12 @@
 	  <MauiXaml Update="FlyoutMenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="TrackerDesignerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TemplatedContentView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\TrackerBuilderPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -88,6 +94,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="TrackerDesignerPage.xaml.cs">
+	    <DependentUpon>TrackerDesignerPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\TemplatedContentView.xaml.cs">
+	    <DependentUpon>TemplatedContentView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\TrackerBuilderPage.xaml.cs">
 	    <DependentUpon>TrackerBuilderPage.xaml</DependentUpon>
 	  </Compile>

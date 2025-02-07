@@ -7,10 +7,20 @@ public class TrackerFactory
 {
     public TrackerFactory()
     {
+    }
 
-    }
-    public void AddTracker<T>(IServiceCollection services, string name) where T : ITracker
+    public static ITracker Create(TrackerType type, string name, ICollection<object> args)
     {
-        services.AddSingleton<ITracker>(provider => (ITracker)Activator.CreateInstance(typeof(T), name)!);
+        switch (type)
+        {
+            case TrackerType.InputTracker:
+                return new InputTracker(name);
+            case TrackerType.RankTracker:
+                return new RankTracker(name, (List<Ranking>)args);
+            default:
+                throw new ArgumentException("Invalid tracker type");
+        }
     }
+
+
 }

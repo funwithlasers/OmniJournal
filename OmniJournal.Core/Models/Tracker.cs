@@ -1,29 +1,55 @@
 ﻿namespace OmniJournal.Core.Models;
 
-public class Tracker
+public abstract class Tracker : ITracker
 {
     public int Id { get; set; }
-    public TrackerType Type { get; set; }
-    public required string Name { get; set; }
-    public string? Value { get; set; }
+    public string Name { get; set; }
+    public TrackerType TrackerType { get; set; }
+    public Type TargetDataType { get; set; }
 
-    public object? GetTypedValue()
+    protected Tracker(string name, Type? targetDataType = null)
     {
-        return Type switch
+        Name = name;
+        TargetDataType = targetDataType ?? typeof(string);
+
+        TrackerType = GetClassType() switch
         {
-            TrackerType.StringTracker => Value,
-            TrackerType.IntTracker => int.TryParse(Value, out var intValue) ? intValue : null,
-            TrackerType.DecimalTracker => decimal.TryParse(Value, out var decimalValue) ? decimalValue : null,
-            TrackerType.TimeTracker => TimeSpan.TryParse(Value, out var timeValue) ? timeValue : null,
-            _ => null
+            Type t when t == typeof(RankTracker) => TrackerType.RankTracker,
+            Type t when t == typeof(InputTracker) => TrackerType.InputTracker,
+            _ => TrackerType.InputTracker
         };
+
+        //SEND TO DB
+
+        //GET ID FROM DB
+
+        //Id = id;
+
+        //Type = type;
     }
+
+    public virtual Type GetClassType()
+    {
+        return this.GetType();
+    }
+
+    //public static TrackerType FromString(string trackerType) =>
+    //Enum.TryParse(trackerType, out TrackerType parsedTrackerType) ? parsedTrackerType : default;
 }
 
 public enum TrackerType
 {
-    StringTracker,
-    IntTracker,
-    DecimalTracker,
-    TimeTracker,
+    InputTracker,
+    RankTracker
+}
+
+public static class TrackerTypeExtensions
+{
+    public static string ToString(this TrackerType trackerType) =>
+        trackerType switch
+        {
+            TrackerType.InputTracker => "Input Tracker",
+            TrackerType.RankTracker => "Rank Tracker",
+            _ => "Input Tracker"
+        };
 }

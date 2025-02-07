@@ -1,4 +1,4 @@
-﻿namespace OmniJournal.Core;
+﻿namespace OmniJournal.Core.Models;
 
 public class Ranking
 {

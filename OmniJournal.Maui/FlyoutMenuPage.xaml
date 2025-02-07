@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:OmniJournal.Maui"
+             xmlns:views="clr-namespace:OmniJournal.Maui.Views"
              x:Class="OmniJournal.Maui.FlyoutMenuPage"
              Title="FlyoutMenuPage">
     <CollectionView x:Name="collectionView"
@@ -12,12 +13,12 @@
                 <local:FlyoutPageItem Title="Journal"
                                       IconSource="contacts.png"
                                       TargetType="{x:Type local:MainPage}" />
-                <local:FlyoutPageItem Title="Charts"
+                <local:FlyoutPageItem Title="Tracker Designer"
                                       IconSource="reminders.png"
-                                      TargetType="{x:Type local:MainPage}" />
+                                      TargetType="{x:Type local:TrackerDesignerPage}" />
                 <local:FlyoutPageItem Title="Manage Trackers"
                                       IconSource="todo.png"
-                                      TargetType="{x:Type local:TrackerBuilderPage}" />
+                                      TargetType="{x:Type views:TrackerBuilderPage}" />
             </x:Array>
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>
