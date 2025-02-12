@@ -6,7 +6,7 @@
              xmlns:templates="clr-namespace:OmniJournal.Maui.Templates"
              x:Class="OmniJournal.Maui.TrackerDesignerPage">
 
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
             <templates:TrackerDesignerTemplateSelector x:Key="TemplateSelector">
                 <templates:TrackerDesignerTemplateSelector.InputTrackerDesignerTemplate>
@@ -24,7 +24,7 @@
                         <VerticalStackLayout Padding="10">
                             <Entry Text="{Binding TrackerDesigner.Name}" FontSize="20" />
                             <Label Text="{Binding TrackerDesigner.DataType}" FontSize="20" />
-                            <!--<Label Text="{Binding TrackerDesigner.Rankings}" FontSize="20" />-->
+                            --><!--<Label Text="{Binding TrackerDesigner.Rankings}" FontSize="20" />--><!--
                         </VerticalStackLayout>
                     </DataTemplate>
                 </templates:TrackerDesignerTemplateSelector.RankTrackerDesignerTemplate>
@@ -34,20 +34,22 @@
                     <VerticalStackLayout Padding="10">
                         <Entry Text="{Binding TrackerDesigner.Name}" FontSize="20" />
                         <Label Text="{Binding TrackerDesigner.DataType}" FontSize="20" />
-                        <!--<Label Text="{Binding TrackerDesigner.Rankings}" FontSize="20" />-->
+                        --><!--<Label Text="{Binding TrackerDesigner.Rankings}" FontSize="20" />--><!--
                     </VerticalStackLayout>
                 </DataTemplate>
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
     
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
             <Picker x:Name="templatePicker"
                 Title="Select Template"
-                ItemsSource="{Binding TrackerTypes}" >
-            </Picker>
+                ItemsSource="{Binding TrackerTypes}" />
 
-
+            <ContentView
+                Content="{Binding SelectedTemplate}"
+                BindingContext="{Binding TrackerDesigner}" 
+            />  
         </VerticalStackLayout>
         <!--<VerticalStackLayout 
             Spacing="25" 
