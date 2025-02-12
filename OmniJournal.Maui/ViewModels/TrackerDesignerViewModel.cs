@@ -8,9 +8,6 @@ namespace OmniJournal.Maui.ViewModels;
 
 public partial class TrackerDesignerViewModel : INotifyPropertyChanged
 {
-    private TemplateConverter _templateConverter;
-
-
     private string? _selectedTemplate;
     public string? SelectedTemplate
     {

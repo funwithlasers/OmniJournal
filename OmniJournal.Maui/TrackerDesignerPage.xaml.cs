@@ -17,7 +17,6 @@ public partial class TrackerDesignerPage : ContentPage
             var selectedTemplate = (TrackerType)templatePicker.SelectedIndex;
             // Use the selectedTemplate as needed
             // For example, you can set it to a ContentView or other UI element
-            contentView.Content = (View)selectedTemplate.CreateContent();
         }
     }
 }

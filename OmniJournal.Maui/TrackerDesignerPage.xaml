@@ -37,7 +37,6 @@
                         <!--<Label Text="{Binding TrackerDesigner.Rankings}" FontSize="20" />-->
                     </VerticalStackLayout>
                 </DataTemplate>
-            <templates:TemplateConverter x:Key="TemplateConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -45,17 +44,10 @@
         <VerticalStackLayout Spacing="10" Padding="10">
             <Picker x:Name="templatePicker"
                 Title="Select Template"
-                ItemsSource="{Binding TrackerTypes}"
-                SelectedIndexChanged="OnPickerSelectedIndexChanged"
-                    >
+                ItemsSource="{Binding TrackerTypes}" >
             </Picker>
 
-            <ContentView x:Name="contentView">
-                <ContentView.Content>
-                    <Border BindingContext="{Binding CurrentItem}"
-                        Content="{Binding ., Converter={StaticResource TemplateSelector}}"/>
-                </ContentView.Content>
-            </ContentView>
+
         </VerticalStackLayout>
         <!--<VerticalStackLayout 
             Spacing="25" 
