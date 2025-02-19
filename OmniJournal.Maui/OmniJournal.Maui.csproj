@@ -78,7 +78,10 @@
 	  <MauiXaml Update="Templates\NewContent1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Templates\RankTrackerDesignerTemplate.xaml">
+	  <MauiXaml Update="Views\InputTrackerDesignerView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\RankTrackerDesignerView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="TrackerDesignerPage.xaml">
@@ -102,6 +105,12 @@
 	<ItemGroup>
 	  <Compile Update="TrackerDesignerPage.xaml.cs">
 	    <DependentUpon>TrackerDesignerPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\InputTrackerDesignerView.xaml.cs">
+	    <DependentUpon>InputTrackerDesignerView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\RankTrackerDesignerView.xaml.cs">
+	    <DependentUpon>RankTrackerDesignerView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\TemplatedContentView.xaml.cs">
 	    <DependentUpon>TemplatedContentView.xaml</DependentUpon>

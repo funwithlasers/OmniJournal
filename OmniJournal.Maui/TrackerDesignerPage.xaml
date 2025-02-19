@@ -2,77 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:OmniJournal.Maui"
+             xmlns:models="clr-namespace:OmniJournal.Core.Models;assembly=OmniJournal.Core"
              xmlns:views="clr-namespace:OmniJournal.Maui.Views"
-             xmlns:templates="clr-namespace:OmniJournal.Maui.Templates"
              x:Class="OmniJournal.Maui.TrackerDesignerPage">
 
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <templates:TrackerDesignerTemplateSelector x:Key="TemplateSelector">
-                <templates:TrackerDesignerTemplateSelector.InputTrackerDesignerTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout Padding="10">
-                            <Entry Text="{Binding TrackerDesigner.Name}" FontSize="20" />
-                            <Label Text="{Binding TrackerDesigner.DataType}" FontSize="20" />
-                            <Label Text="{Binding TrackerDesigner.Precision}" FontSize="20" />
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </templates:TrackerDesignerTemplateSelector.InputTrackerDesignerTemplate>
-
-                <templates:TrackerDesignerTemplateSelector.RankTrackerDesignerTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout Padding="10">
-                            <Entry Text="{Binding TrackerDesigner.Name}" FontSize="20" />
-                            <Label Text="{Binding TrackerDesigner.DataType}" FontSize="20" />
-                            --><!--<Label Text="{Binding TrackerDesigner.Rankings}" FontSize="20" />--><!--
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </templates:TrackerDesignerTemplateSelector.RankTrackerDesignerTemplate>
-
-                </templates:TrackerDesignerTemplateSelector>
-                <DataTemplate x:Key="DooDOOTracker">
-                    <VerticalStackLayout Padding="10">
-                        <Entry Text="{Binding TrackerDesigner.Name}" FontSize="20" />
-                        <Label Text="{Binding TrackerDesigner.DataType}" FontSize="20" />
-                        --><!--<Label Text="{Binding TrackerDesigner.Rankings}" FontSize="20" />--><!--
-                    </VerticalStackLayout>
-                </DataTemplate>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
-    
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
-            <Picker x:Name="templatePicker"
+            <Picker x:Name="trackerTypePicker"
                 Title="Select Template"
-                ItemsSource="{Binding TrackerTypes}" />
+                ItemsSource="{Binding TrackerTypes}"
+                SelectedIndexChanged="OnTrackerTypeSelectedIndexChanged" />
 
-            <ContentView
-                Content="{Binding SelectedTemplate}"
-                BindingContext="{Binding TrackerDesigner}" 
-            />  
+            <!--<views:RankTrackerDesignerView />-->
+            <ContentPresenter x:Name="contentPresenter" />
+
         </VerticalStackLayout>
-        <!--<VerticalStackLayout 
-            Spacing="25" 
-            Padding="30,0" 
-            VerticalOptions="Center">
-
-            <Label Text="Tracker Designer" FontSize="Title"/>
-            <Label Text="{Binding ActiveTrackerDesigner.TrackerName}" />
-            <Label Text="{Binding TrackerDesigner.TrackerTypeString}" />
-            --><!--<Button Text="Click Me" Command="{Binding ShowMessageCommand}" />--><!--
-            
-            <Picker Title="Select Tracker Type"
-                    ItemsSource="{Binding TrackerTypes}"
-                    SelectedItem="{Binding SelectedTemplate}"
-                    FontSize="Subtitle" />
-            
-            --><!--<views:TemplatedContentView
-                ContentTemplate="{Binding SelectedTemplate}"
-                BindingContext="{Binding TrackerDesigner}" 
-                />--><!--
-            <ContentPresenter Content="{Binding SelectedTemplate, Converter={StaticResource TemplateConverter}}" />
-
-        </VerticalStackLayout>-->
     </ScrollView>
  
 </ContentPage>

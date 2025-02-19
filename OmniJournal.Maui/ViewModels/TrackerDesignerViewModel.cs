@@ -1,30 +1,37 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using OmniJournal.Core.Models;
-using OmniJournal.Maui.Templates;
+using OmniJournal.Maui.Views;
 
 namespace OmniJournal.Maui.ViewModels;
 
-
 public partial class TrackerDesignerViewModel : INotifyPropertyChanged
 {
-    private string? _selectedTemplate;
-    public string? SelectedTemplate
+    private string? _selectedTrackerType = "RankTracker";
+    public string SelectedTrackerType
     {
-        get => _selectedTemplate;
+        get => _selectedTrackerType;
         set
         {
-            if (_selectedTemplate != value)
+            _selectedTrackerType = value;
+            OnPropertyChanged(nameof(SelectedTrackerType));
+            OnPropertyChanged(nameof(SelectedTrackerView));
+        }
+    }
+
+    public ContentView SelectedTrackerView
+    {
+        get
+        {
+            return SelectedTrackerType switch
             {
-                _selectedTemplate = value;
-                OnPropertyChanged();
-            }
+                "RankTracker" => new RankTrackerDesignerView(),
+                "InputTracker" => new RankTrackerDesignerView()
+            };
         }
     }
 
     private TrackerDesigner _trackerDesigner;
-    private Picker templatePicker;
-    private Picker _templatePicker;
 
     public TrackerDesigner ActiveTrackerDesigner
     {
@@ -35,7 +42,8 @@ public partial class TrackerDesignerViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(ActiveTrackerDesigner));
             OnPropertyChanged(nameof(TrackerName));
             OnPropertyChanged(nameof(TrackerTypeString));
-        }   
+            OnPropertyChanged(nameof(SelectedTrackerType));
+        }
     }
 
     public List<string> TrackerTypes { get; set; } = [.. Enum.GetNames<TrackerType>()];
@@ -43,33 +51,9 @@ public partial class TrackerDesignerViewModel : INotifyPropertyChanged
     public string TrackerName => ActiveTrackerDesigner?.Name ?? string.Empty;
     public string TrackerTypeString => ActiveTrackerDesigner?.TrackerType.ToString() ?? string.Empty;
 
-    public Command ShowMessageCommand { get; }
-    public Command ChangeDesignerTemplate { get; }
-
-    public TrackerDesignerViewModel(Picker templatePicker)
+    public TrackerDesignerViewModel()
     {
-        _templatePicker = templatePicker;
-
-
         ActiveTrackerDesigner = new TrackerDesigner();
-        ShowMessageCommand = new Command(OnShowMessage);
-        ChangeDesignerTemplate = new Command(OnTrackerTypeChanged);
-    }
-
-
-    private void OnShowMessage()
-    {
-        ActiveTrackerDesigner!.Name = ActiveTrackerDesigner.Name == "Default Tracker" ? "Alt Tracker" : "Default Tracker";
-    }
-
-    private void OnTrackerTypeChanged()
-    {
-       
-    }
-
-    void OnPickerSelectedIndexChanged(object sender, EventArgs e)
-    {
-        var selectedType = (TrackerType)templatePicker.SelectedIndex;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
