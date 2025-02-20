@@ -10,18 +10,17 @@ public partial class TrackerDesignerPage : ContentPage
         BindingContext = new TrackerDesignerViewModel();
     }
 
+    // I want to move this to viewmodel as an ICommand but need to look into MVVM
     private void OnTrackerTypeSelectedIndexChanged(object sender, EventArgs e)
     {
+        var picker = (Picker)sender;
 
-        int selectedIndex = trackerTypePicker.SelectedIndex;
-
-        // Update the ContentView based on the selected index
-        switch (selectedIndex)
+        switch (picker.SelectedItem.ToString())
         {
-            case 0:
+            case "Rank Tracker":
                 contentPresenter.Content = new RankTrackerDesignerView();
                 break;
-            case 1:
+            case "Input Tracker":
                 contentPresenter.Content = new InputTrackerDesignerView();
                 break;
             default:

@@ -13,6 +13,7 @@
                 ItemsSource="{Binding TrackerTypes}"
                 SelectedIndexChanged="OnTrackerTypeSelectedIndexChanged" />
 
+            
             <!--<views:RankTrackerDesignerView />-->
             <ContentPresenter x:Name="contentPresenter" />
 

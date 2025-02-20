@@ -1,4 +1,6 @@
-﻿namespace OmniJournal.Core.Models;
+﻿using OmniJournal.Core.Shared.Attributes;
+
+namespace OmniJournal.Core.Models;
 
 public abstract class Tracker : ITracker
 {
@@ -39,17 +41,8 @@ public abstract class Tracker : ITracker
 
 public enum TrackerType
 {
+    [DisplayStringAttribute("Input Tracker")]
     InputTracker,
+    [DisplayStringAttribute("Rank Tracker")]
     RankTracker
-}
-
-public static class TrackerTypeExtensions
-{
-    public static string ToString(this TrackerType trackerType) =>
-        trackerType switch
-        {
-            TrackerType.InputTracker => "Input Tracker",
-            TrackerType.RankTracker => "Rank Tracker",
-            _ => "Input Tracker"
-        };
 }

@@ -2,12 +2,13 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using OmniJournal.Core.Models;
 using OmniJournal.Maui.Views;
+using OmniJournal.Core.Shared.Extensions;
 
 namespace OmniJournal.Maui.ViewModels;
 
 public partial class TrackerDesignerViewModel : INotifyPropertyChanged
 {
-    private string? _selectedTrackerType = "RankTracker";
+    private string? _selectedTrackerType;
     public string SelectedTrackerType
     {
         get => _selectedTrackerType;
@@ -40,16 +41,12 @@ public partial class TrackerDesignerViewModel : INotifyPropertyChanged
         {
             _trackerDesigner = value;
             OnPropertyChanged(nameof(ActiveTrackerDesigner));
-            OnPropertyChanged(nameof(TrackerName));
-            OnPropertyChanged(nameof(TrackerTypeString));
             OnPropertyChanged(nameof(SelectedTrackerType));
         }
     }
 
-    public List<string> TrackerTypes { get; set; } = [.. Enum.GetNames<TrackerType>()];
-
-    public string TrackerName => ActiveTrackerDesigner?.Name ?? string.Empty;
-    public string TrackerTypeString => ActiveTrackerDesigner?.TrackerType.ToString() ?? string.Empty;
+    //public List<string> TrackerTypes { get; set; } = [.. Enum.GetNames<TrackerType>()];
+    public List<string> TrackerTypes { get; set; } = EnumExtensions.GetDisplayStrings<TrackerType>();
 
     public TrackerDesignerViewModel()
     {
@@ -57,7 +54,7 @@ public partial class TrackerDesignerViewModel : INotifyPropertyChanged
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
